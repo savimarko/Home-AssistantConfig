@@ -14,7 +14,7 @@ homeassistant:
   customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-introduction:
+#introduction:
 
 # Enables the frontend
 frontend:
@@ -59,12 +59,14 @@ sensor:
   - platform: yr
   # outdoor temperature
   - platform: mqtt
-    name: "Outdoor Temperature"
+    name: "Outdoor Temp"
+    device_class: temperature
     state_topic: "outdoor/temperature"
     unit_of_measurement: 'C'
   # outdoor humidity
   - platform: mqtt
     name: "Outdoor humidity"
+    device_class: humidity
     state_topic: "outdoor/humidity"
     unit_of_measurement: '%'
 
