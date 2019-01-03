@@ -57,14 +57,14 @@ sun:
 sensor:
   # Weather prediction
   - platform: yr
-
-sensor:
+  # outdoor temperature
   - platform: mqtt
+    name: "Outdoor Temperature"
     state_topic: "outdoor/temperature"
     unit_of_measurement: 'C'
-
-sensor:
+  # outdoor humidity
   - platform: mqtt
+    name: "Outdoor humidity"
     state_topic: "outdoor/humidity"
     unit_of_measurement: '%'
 
