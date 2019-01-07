@@ -122,6 +122,12 @@ vacuum:
   - platform: neato
     name: Donald
     host: 192.168.1.108  
+    
+notify:
+  - platform: html5
+    gcm_api_key: !secret gcm_api_key
+    gcm_sender_id: !secret gcm_sender_id
+    
 
 group: !include groups.yaml
 automation: !include automations.yaml
