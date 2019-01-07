@@ -13,6 +13,20 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+http:
+  base_url: https://savela.duckdns.org:8123
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
+
 # Show links to resources in log and frontend
 #introduction:
 
@@ -57,17 +71,34 @@ sun:
 sensor:
   # Weather prediction
   - platform: yr
+    name: ennuste 6h
+    forecast: 6
+    monitored_conditions:
+    - temperature
+    - symbol
   # outdoor temperature
   - platform: mqtt
-    name: "Outdoor Temp"
+    name: "ulkolämpö"
     device_class: temperature
-    state_topic: "outdoor/temperature"
+    state_topic: "NexusTemperatureHumidity/123/temperature"
     unit_of_measurement: 'C'
   # outdoor humidity
   - platform: mqtt
-    name: "Outdoor humidity"
+    name: "ulkokosteus"
     device_class: humidity
-    state_topic: "outdoor/humidity"
+    state_topic: "NexusTemperatureHumidity/123/humidity"
+    unit_of_measurement: '%'
+  # indoor temperature
+  - platform: mqtt
+    name: "huonelämpö1"
+    device_class: temperature
+    state_topic: "NexusTemperatureHumidity/130/temperature"
+    unit_of_measurement: 'C'
+  # outdoor humidity
+  - platform: mqtt
+    name: "huonekosteus1"
+    device_class: humidity
+    state_topic: "NexusTemperatureHumidity/130/humidity"
     unit_of_measurement: '%'
 
 # Text to speech
@@ -82,6 +113,15 @@ tuya:
   username: !secret tuya_username
   password: !secret tuya_password
   country_code: 358
+
+neato:
+  username: !secret neato_username
+  password: !secret neato_password
+  
+vacuum:
+  - platform: neato
+    name: Donald
+    host: 192.168.1.108  
 
 group: !include groups.yaml
 automation: !include automations.yaml
