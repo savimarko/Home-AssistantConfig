@@ -24,5 +24,27 @@ light.bedroom:
   friendly_name: Makuuhuone
 light.living_room:
   friendly_name: Olohuone
-light.kids_room:
+light.kid_s_room:
   friendly_name: Kolmosten huone
+light.hall:
+  friendly_name: Eteinen
+switch.donald_schedule:
+  hidden: true
+light.dimmable_light_1:
+  hidden: true
+light.dimmable_light_1_2:
+  hidden: true
+light.dimmable_light_1_3:
+  hidden: true
+sensor.zte_upnp_bytes_received:
+  hidden: true
+sensor.zte_upnp_bytes_sent:
+  hidden: true
+sensor.zte_upnp_packets_received:
+  hidden: true
+sensor.zte_upnp_packets_sent:
+  hidden: true
+sensor.zte_upnp_packets_sec_received:
+  hidden: true
+sensor.zte_upnp_packets_sec_sent:
+  hidden: true

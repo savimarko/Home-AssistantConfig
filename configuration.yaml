@@ -18,20 +18,21 @@ http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
-influxdb:
-  host: a0d7b954-influxdb
-  port: 8086
-  database: homeassistant
-  username: homeassistant
-  password: !secret influxdb_password
-  max_retries: 3
-  default_measurement: state
+#influxdb:
+#  host: a0d7b954-influxdb
+#  port: 8086
+#  database: homeassistant
+#  username: homeassistant
+#  password: !secret influxdb_password
+#  max_retries: 3
+#  default_measurement: state
 
 # Show links to resources in log and frontend
 #introduction:
 
 # Enables the frontend
 frontend:
+  themes: !include_dir_merge_named themes
 
 # Enables configuration UI
 config:
@@ -67,6 +68,9 @@ map:
 # Track the sun
 sun:
 
+weather:
+  platform: met
+  
 # Sensors
 sensor:
   # Weather prediction
@@ -121,7 +125,13 @@ neato:
 vacuum:
   - platform: neato
     name: Donald
-    host: 192.168.1.108  
+    host: 192.168.1.108
+    
+climate:
+  - platform: broadlink
+    friendly_name: Eemeli
+    mac: "78:0f:77:d4:20:70"
+    host: "192.168.1.100"    
     
 notify:
   - platform: html5
